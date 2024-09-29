@@ -29,7 +29,7 @@ function App() {
       user == null ? <Login /> : <Router/>
     }
     <Toaster
-        position="bottom-left"
+        position="top-right"
         reverseOrder={true}
       />
     </>

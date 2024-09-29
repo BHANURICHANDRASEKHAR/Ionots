@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import Input from './Input.jsx';
 import { Context } from '../Context/UserContext.jsx';
 import loginfunction, { Signup } from './loginfun.js';
-
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
     const { show, setShow } = useContext(Context);
     const [isSignup, setIsSignup] = useState(false);
@@ -14,6 +14,7 @@ export default function Login() {
         confirmPassword: '',
         role: 'employee'  // Default role for both login and signup
     };
+    const navigate = useNavigate();
     const [data, setData] = useState(initialData);
     const onHandler = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
@@ -21,7 +22,7 @@ export default function Login() {
 
     const Submit = () => {
         if (!isSignup) {
-            loginfunction(setLoading, data, setShow);
+            loginfunction(setLoading, data, setShow,navigate);
         } else {
             Signup(setLoading, data, setIsSignup, setData, initialData);
         }
@@ -122,7 +123,7 @@ const Container = ({ data, onHandler, Submit, isSignup, setIsSignup, loading }) 
                                 value={data.password}
                                 name="password"
                             />
-                            <div className="form-group">
+                            <div className="form-group mt-2">
                                 <label htmlFor="role">Role</label>
                                 <select
                                     id="role"

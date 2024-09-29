@@ -1,7 +1,8 @@
 import axios from "axios";
 import Cookie from 'js-cookie';
 import { errorfunction, successfunction } from "../../toast";
-async function loginfunction(setLoading, data, setShow) {
+
+async function loginfunction(setLoading, data, setShow,navigate) {
    const check=loginvali(data);
     if(check)
     { setLoading(true);
@@ -22,6 +23,7 @@ async function loginfunction(setLoading, data, setShow) {
                             expires: date
                         });
                         setShow(prevShow => !prevShow); 
+                        navigate('/')
                     }
                     else{
                         errorfunction('Invalid Role');

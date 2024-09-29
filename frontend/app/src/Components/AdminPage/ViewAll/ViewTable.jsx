@@ -52,10 +52,10 @@ const columns = (handleApprove) => [
         >
           Approve
         </Button>
-        <Button 
-          className='bg-danger'
+        <Button
+        className='text-light' 
           onClick={() => handleApprove(record, 'Rejected')} 
-          style={{ marginLeft: '8px' }}
+          style={{ marginLeft: '8px',backgroundColor:'#ff0000' }}
         >
           Reject
         </Button>
