@@ -118,5 +118,24 @@
     }
   }
   
-  
+  @media screen and (max-width: 460px) {
+    .medha {
+      height: 0.99rem;
+      object-fit:contain;
+    }
+    .login-name{
+      font-size: 1rem;
+      margin-bottom: 50px;
+    }
+    .login-name::before{
+      content: '';
+      height: 4px;
+      width: 150px;
+      position: absolute;
+      top: 25px;
+      border-radius: 3px;
+      background: linear-gradient(to right, #000084, #ff0000);  
+    }
+    
+  }
   
