@@ -10,7 +10,7 @@ import getToken from '../Context/token.js';
 import { Context } from '../Context/UserContext.jsx';
 function BasicExample() {
   const {role} =useContext(Context);
-  console.log(role);
+ 
   // useEffect(()=>{
   //   const token = getToken();
   //   if(token)

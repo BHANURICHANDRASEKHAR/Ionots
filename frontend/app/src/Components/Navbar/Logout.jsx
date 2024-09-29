@@ -7,7 +7,7 @@ const App = () => {
   const handleConfirm = () => {
     Cookie.remove('x-token');
     setShow(!show);
-    console.log('You clicked Logout!',show);
+   
   };
 
   

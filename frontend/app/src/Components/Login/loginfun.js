@@ -7,10 +7,10 @@ async function loginfunction(setLoading, data, setShow,navigate) {
     if(check)
     { setLoading(true);
         try {
-            const response = await axios.post("http://localhost:5000/getUsers",data);
+            const response = await axios.post("https://complyance.onrender.com/getUsers",data);
            
             if (response.data.status) {
-                console.log(response.data);
+                
                 if (response.data.data.email == data.email && data.password == response.data.data.password ) {
                   
                     if(response.data.data.role==data.role.toLowerCase()) 
@@ -52,7 +52,7 @@ const check=signvali(data)
         setloading(true);
         try{
             
-            const response = await axios.post("http://localhost:5000/adduser",data);
+            const response = await axios.post("https://complyance.onrender.com/adduser",data);
             if(response.data.status)
             {
               successfunction(response.data.msg);

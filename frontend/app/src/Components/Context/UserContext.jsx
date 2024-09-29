@@ -15,7 +15,7 @@ export default function UserContext({children}) {
     }
   },[]);
   
-   console.log(role)
+
     const [show,setShow]=useState(false)
   return (
    <Context.Provider value={{show,setShow,data,empdata,setempdata, setdata,userdata,setuserdata,role,setRole}}>

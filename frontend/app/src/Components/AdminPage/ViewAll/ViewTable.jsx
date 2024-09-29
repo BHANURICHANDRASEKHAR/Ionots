@@ -69,7 +69,7 @@ const handleApprove = (record, value,setstatus, filteredData, setdata) => {
     
     const idx = filteredData.findIndex(ele => ele._id === record._id);
     filteredData.splice(idx, 1);
-    console.log(filteredData)
+   
     setdata(filteredData);
     setstatus((prev)=>!prev)
 
@@ -79,7 +79,7 @@ const App = ({ data, setdata }) => {
   var  filteredData = data.filter(record => record.status === 'Pending');
   const [status,setstatus]=useState(false)
   useEffect(() => {
-    console.log('Data has been updated:', data);
+    console.log('Data has been updated:');
   }, [data]);
 
   return (

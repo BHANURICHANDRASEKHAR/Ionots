@@ -17,7 +17,7 @@ export default async function submissionForm(setLoading,data,role,setData)
       
         try{
 
-            const response = await axios.post("http://localhost:5000/submitform",data);
+            const response = await axios.post("https://complyance.onrender.com/submitform",data);
             if(response.data.status)
             {
                 successfunction(response.data.msg);
