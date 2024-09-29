@@ -92,7 +92,7 @@ const Filters = ({ handleEventChange, selectedEvent }) => {
 
   return (
     <div>
-      <select onChange={handleEventChange} value={selectedEvent} className='form-select mb-3 w-25'>
+      <select onChange={handleEventChange} value={selectedEvent} className='form-select mb-3 w-lg-25'>
         <option value=''>Show All</option>
         {Events.map((event, index) => (
           <option key={index} value={event}>
