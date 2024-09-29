@@ -4,7 +4,7 @@ const router = express.Router();
 
 export default router.post('/', async (req, res) => {
   const { username, email, password,role } = req.body;
-   console.log(req.body)
+ 
   try {
     const existingUser = await Absentlist.findOne({ email: email });
     

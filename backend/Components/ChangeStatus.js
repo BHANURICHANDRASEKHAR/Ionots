@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     const [userdata, value, mngdata] = req.body; // Destructure the incoming data from the request body
-    const {_id,userEmail}=userdata; 
-    console.log(mngdata)
+    const {_id}=userdata; 
+ 
     try {
         
 

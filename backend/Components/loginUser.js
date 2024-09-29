@@ -5,7 +5,7 @@ router.post('/', async (req, res) => {
     const {email} = req.body;
     try {
       const users = await Absentlist.findOne({email}); 
-      console.log(users);
+
       if(!users)
       {
         return res.status(204).send({ status: false, msg: 'User not found' }); 
