@@ -1,0 +1,122 @@
+/* General Navbar Styling */
+.navbar-container {
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    background: rgb(255, 241, 241) !important;
+  }
+  
+  .navbar-brand {
+    color: black;
+  }
+  
+  /* Navigation Links */
+  .navitem {
+    font-weight: 700;
+    font-size: large;
+    color: black;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navitem:hover {
+    color: orange !important;
+    font-weight: bold;
+  }
+  
+  .navitem.active1 {
+    font-weight: 900;
+    color: #0e8cf9 !important;
+  }
+  
+  .navitem::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -10px;
+    background-color: orange;
+    height: 3px;
+    transform-origin: left;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform 0.8s ease-in-out;
+  }
+  
+  .navitem:hover::after {
+    transform: scaleX(1);
+  }
+  
+  /* Offcanvas Menu Styling */
+  .offcanvas {
+    background: transparent;
+    color: black;
+  }
+  
+  .offcanvas .nav-link {
+    color: black;
+    font-weight: 800 !important;
+  }
+  
+  /* Logo Styling */
+  .medha {
+    height: 1.8rem;
+    object-fit:contain;
+  }
+  
+  /* Web Name Styling */
+  .webname {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: capitalize !important;
+    background: linear-gradient(to right, #000084, #ff0000);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  /* Button and Icons */
+  .menu-icon {
+    font-size: 24px;
+    outline: none;
+    background: transparent;
+    border: none;
+    display: none;
+  }
+  
+  /* Animation for Offcanvas */
+  .fade-scale-enter {
+    opacity: 0;
+    transform: scale(2);
+  }
+  
+  .fade-scale-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .fade-scale-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .fade-scale-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .desktop-nav {
+      display: none;
+    }
+    .menu-icon{
+      display: none;
+    }
+  }
+  
+  
+  

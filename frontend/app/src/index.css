@@ -14,8 +14,8 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
+  font-weight: 700;
+  color: black;
   text-decoration: inherit;
 }
 a:hover {
@@ -24,9 +24,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+ 
   min-height: 100vh;
 }
 
@@ -65,4 +63,43 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+.img-sub img{
+  width: 100%;
+  height: 70vh;
+  object-fit:fill;
+}
+.ant-steps-item-title{
+  color: #000000 !important;
+}
+
+@media screen and (max-width:768px) {
+  .img-sub img{
+    width: 100%;
+    height: 50vh;
+  }
+ 
+}
+.table-fluid{
+  overflow-x: scroll;
+  width: 100%;
+  
+}
+.table-fluid::-webkit-scrollbar{
+ display: none;
+}
+table tr th td{
+  border: 1px solid black;
+}
+.tr{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.tr label,.tr1 label{
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+.tr1{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
