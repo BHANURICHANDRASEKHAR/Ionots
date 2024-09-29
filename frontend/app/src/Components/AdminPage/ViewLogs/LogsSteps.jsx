@@ -91,7 +91,7 @@ const Filters = ({ handleEventChange, selectedEvent }) => {
   const Events = [ 'Rejected', 'Approved'];
 
   return (
-    <div>
+    <div className='mt-4'>
       <select onChange={handleEventChange} value={selectedEvent} className='form-select mb-3 w-lg-25'>
         <option value=''>Show All</option>
         {Events.map((event, index) => (

@@ -20,11 +20,11 @@
     background: linear-gradient(to right, #000084, #ff0000);  
   }
   
-.svg-container,.svg1-container {
+.svg-container {
     height:80vh;
     width: 100%;
     margin: 0%;
-    
+
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -35,6 +35,16 @@
     height: 100%;
     max-width: 100%; 
   }
+  .svg1-container {
+    object-fit: contain;
+    height:90vh;
+    width: 100%;
+    margin: 0%;
+
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+  }
   .logo{
     height: 200px;
     width: 100%;
@@ -43,6 +53,21 @@
 @media screen and (max-width: 560px) {
     .svg-container{
         display:none;
+    }
+    .svg1-container{
+      overflow-x: hidden !important;
+      object-fit: contain;
+      height:90vh;
+      width:100%;
+      margin: 0%;
+  
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+    }
+    .svg1-container svg{
+      width: 50%;
+      height: 90%;
     }
 }
 .btn {

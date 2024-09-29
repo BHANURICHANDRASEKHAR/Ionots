@@ -6,7 +6,7 @@ import { json, NavLink } from 'react-router-dom';
 import './Nav.css';
 import logo from '../../assets/logo.jpg';
 import Logout from './Logout.jsx';
-import getToken from '../Context/token.js';
+import Darkmode from '../../DarkMode.jsx'
 import { Context } from '../Context/UserContext.jsx';
 function BasicExample() {
   const {role} =useContext(Context);
@@ -40,15 +40,16 @@ function BasicExample() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary" style={{ display: 'flex' }}>
       <Container>
+      <Darkmode/>
         <img 
           src={logo} 
           className='medha' 
           alt="Company Logo" 
         />
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="basic-navbar-nav " />
+        <Navbar.Collapse id="basic-navbar-nav" className='mt-3 p-3'>
           <Nav className="me-auto  " >
-            <NavLink to="/" className='me-5 mx-5'>Home</NavLink>
+            <NavLink to="/" className='me-lg-5 mx-lg-5'>Home</NavLink>
             {
               navbardata[role.role] &&
               navbardata[role.role].map((item,index) => (
