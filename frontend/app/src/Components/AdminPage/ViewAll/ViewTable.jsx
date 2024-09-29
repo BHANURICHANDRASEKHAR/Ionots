@@ -48,12 +48,13 @@ const columns = (handleApprove) => [
       <span>
         <Button 
           type="primary" 
+          className='w-100 m-2'
           onClick={() => handleApprove(record, 'Approved')} 
         >
           Approve
         </Button>
         <Button
-        className='text-light' 
+        className='text-light w-100 mt-2' 
           onClick={() => handleApprove(record, 'Rejected')} 
           style={{ marginLeft: '8px',backgroundColor:'#ff0000' }}
         >

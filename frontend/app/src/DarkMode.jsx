@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Switch } from 'antd';
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   const onChange = (checked) => {
     setDarkMode(checked);
@@ -17,7 +17,7 @@ const App = () => {
   }, [darkMode]);
 
   return (
-    <Switch defaultChecked onChange={onChange} />
+    <Switch className='m-2' onChange={onChange} />
 
   );
 };
