@@ -1,5 +1,5 @@
 import Cookie from 'js-cookie'
-export default function getToken()
-{
-    return Cookie.get('x-token') || null; 
+export default  function getToken() {
+    const token =  Cookie.get('x-token') || null;
+    return token;
 }

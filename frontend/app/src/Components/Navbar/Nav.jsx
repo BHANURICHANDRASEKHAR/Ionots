@@ -2,45 +2,35 @@ import React,{useContext, useEffect,useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { json, NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import './Nav.css';
-import logo from '../../assets/logo.jpg';
+import logo from '../../assets/logo.png';
 import Logout from './Logout.jsx';
-import Darkmode from '../../DarkMode.jsx'
 import { Context } from '../Context/UserContext.jsx';
 function BasicExample() {
   const {role} =useContext(Context);
- 
-  // useEffect(()=>{
-  //   const token = getToken();
-  //   if(token)
-  //   {
-  //     setUser(JSON.parse(token).username);
-  //   }
-  //   else{
-  //     setUser('manager');
-  //   }
-  // },[]);
+  console.log(role);
   const navbardata={
     'employee':[{
-      to:'Transaction Submission Form',
-      link:'/employee/transaction-submission-form'
+      to:'View Assigned Tasks',
+      link:'/employee/view-assigned-tasks'
     },{
-      to:'View Transactions',
-      link:'/employee/view-transactions'
+      to:'View All Tasks',
+      link:'/employee/view-all-tasks'
     }],
     'manager':[{
-      to:'View All Transactions',
-      link:'/manager/view-all-transactions'
+      to:'Project Assign Form',
+      link:'/manager/project-assign-form'
     },{
-      to:'View Audit Logs',
-      link:'/manager/view-audit-logs'
+      to:'View All Assigned Tasks',
+      link:'/manager/view-all-assigned-tasks'
     }]
   }
+  console.log(navbardata[role.role])
   return (
     <Navbar expand="lg" className="bg-body-tertiary" style={{ display: 'flex' }}>
       <Container>
-      <Darkmode/>
+     
         <img 
           src={logo} 
           className='medha' 
@@ -49,11 +39,11 @@ function BasicExample() {
         <Navbar.Toggle aria-controls="basic-navbar-nav " />
         <Navbar.Collapse id="basic-navbar-nav" className='mt-3 p-3'>
           <Nav className="me-auto  " >
-            <NavLink to="/" className='me-lg-5 mx-lg-5'>Home</NavLink>
+            <NavLink to="/" className='me-lg-5 mx-lg-5 fs-4'>Home</NavLink>
             {
               navbardata[role.role] &&
               navbardata[role.role].map((item,index) => (
-                <NavLink key={index} to={item.link} className='me-5 '>{item.to}</NavLink>
+                <NavLink key={index} to={item.link} className='me-5 fs-4'>{item.to}</NavLink>
               ))
             }
           </Nav>

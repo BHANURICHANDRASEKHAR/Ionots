@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useContext } from 'react'
 import ViewTable from './ViewTable'
-import getManagerLogs from './getAllLogs'
+import getAllLogs from './getAllLogs'
 import Loader from '../../Loader/Loader'
 import { Context } from '../../Context/UserContext'
 import Nodata from '../../../Nodata'
@@ -11,7 +11,7 @@ export default function ViewAllTransactions() {
         if(userdata.length==0)
         {
 
-          getManagerLogs(setLoading,setuserdata,role)
+          getAllLogs(setLoading,setuserdata,role)
         }
     },[])
     if(loading) {
@@ -22,7 +22,7 @@ export default function ViewAllTransactions() {
     <h1 className="login-name mt-4 mb-3">View All Transactions</h1>
     <div className='table-fluid'>
      {
-       userdata.length==0  ? <Nodata/> : <ViewTable data={userdata}/>
+       userdata.length==0  ? <Nodata/> : <ViewTable data={userdata} setData={setuserdata} />
      }
     </div>
     </div>

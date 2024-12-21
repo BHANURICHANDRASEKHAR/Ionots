@@ -9,7 +9,7 @@ import MngLogs from './Components/getMngLogs.js'
 import ADDUser from './Components/addUser.js'
 import LoginUser from './Components/loginUser.js'
 import SetStatus from './Components/ChangeStatus.js'
-import PerticularManager from './Components/Perticularmangerdata.js'
+import PerticularEmployeeLogs from './Components/Perticularmangerdata.js'
 const app = express();
 env.config();
 MongooDB();
@@ -30,13 +30,12 @@ app.use('/submitform', route);
 
 app.use('/getEmployees', getUsers);
 
-
+app.use('/getUsers', LoginUser);
 app.use('/adduser',ADDUser);
 app.use('/getemplogs',getEmployeeLogs);
-app.use('/getUsers', LoginUser);
 app.use('/getmnglogs',MngLogs);
 app.use('/setStatus',SetStatus);
-app.use('/getPerticularmnglogs',PerticularManager)
+app.use('/getPerticularemplogs',PerticularEmployeeLogs)
 var port=process.env.port || 5000
 
 app.listen(port, () => {

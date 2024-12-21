@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { Steps, Pagination } from 'antd'; // Import Steps and Pagination from Ant Design
+import { Steps, Pagination, Button } from 'antd'; 
 import Nodata from '../../../Nodata'
-const App = ({ transactions }) => {
-  // State for managing pagination and filters
-  const [currentPage, setCurrentPage] = useState(1); // Current page
-  const [pageSize, setPageSize] = useState(5); // Items per page
-  const [selectedStatus, setSelectedStatus] = useState(''); // Selected status filter
+import {setStatus} from './getLogs.js'
+const App = ({ transactions,role,setdata  }) => {
+  const [currentPage, setCurrentPage] = useState(1); 
+  const [pageSize, setPageSize] = useState(5); 
+  const [selectedStatus, setSelectedStatus] = useState(''); 
 
-  // Filter logic based on selected status
+
   const filteredTransactions = selectedStatus
     ? transactions.filter((transaction) => transaction.status === selectedStatus)
     : transactions;
 
-  // Pagination logic
+  
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const paginatedTransactions = filteredTransactions.slice(startIndex, endIndex);
@@ -24,7 +24,7 @@ const App = ({ transactions }) => {
 
   const handleEventChange = (e) => {
     setSelectedStatus(e.target.value);
-    setCurrentPage(1); // Reset to first page when filter changes
+    setCurrentPage(1); 
   };
 
   return (
@@ -36,7 +36,7 @@ const App = ({ transactions }) => {
       const status1 = transaction.status;
       return (
         <div className='mb-2 border border-2 p-4' key={index}>
-          <Tr list={transaction} />
+          <Tr list={transaction} role={role} setdata={setdata} index={index} t_data={paginatedTransactions}/>
           <Steps
             current={status1 === 'Pending' ? 1 : 3}
             status={status1 === 'Reject' ? 'error' : 'process'}
@@ -74,14 +74,30 @@ const App = ({ transactions }) => {
 
 export default App;
 
-const Tr = ({ list }) => {
+const Tr = ({ list,role,setdata,index,t_data }) => {
+  const [loading,setLoading]=useState(false)
   return (
-    <div className='tr1 mb-3 mt-3'>
-      <label className='m-1'>Name: <b>{list.UserName}</b></label>
-      <label className='m-1'>Email: <b>{list.userEmail}</b></label>
-      <label className='m-1'>Type: <b>{list.transactionType}</b></label>
-      <label className='m-1'>Amount: <b>{list.amount}</b></label>
-      <label className='m-1'>Status: <b>{list.status}</b></label>
+    <div className='tr mb-3 mt-3'>
+      <label className='m-1'>
+        Title: <b>{list.title}</b>
+      </label>
+      <label className='m-1'>
+        Project Deadline: <b>{list.deadline.slice(0,10)}</b>
+      </label>
+      <label className='m-1'>
+        Project Assigned By: <b>{list.Adminusername}</b>
+      </label>
+      <label className='m-1'>
+        Status: <b>{list.status}</b>
+      </label>
+      {
+        (list.status!='Rejected' && list.status!='Completed') && <label className='mt-1'>
+        <b>Change Project Status</b>&ensp;&ensp;
+         <Button className='bg-success text-white' onClick={()=>{setStatus(list,'Completed',setLoading,index,setdata,t_data)}}>
+                    {loading ? 'Loading...' : 'Complete'}
+          </Button>
+      </label>
+      }
     </div>
   );
 };

@@ -1,9 +1,13 @@
 import express from 'express';
-import Absentlist from "../Modals/AddEmp.js";
+import Employee from "../Modals/AddEmp.js";
 const router=express.Router();
 router.get('/', async (req, res) => {
     try {
-      const users = await Absentlist.find(); // Fetch all users from the database
+      const users = await Employee.find({role:'employee'},{
+        username:1,
+        _id:1,
+      });
+    
       res.status(200).send({ status: true, data: users });
     } catch (e) {
       console.log(e.message);

@@ -1,13 +1,14 @@
 // getPerticularmnglogs
 
 import express from 'express';
-import Absentlist from "../Modals/TransactionSchema.js";
+import Data from "../Modals/TransactionSchema.js";
 const router=express.Router();
 router.get('/', async (req, res) => {
     const {_id}= req.query;
-   
+   console.log(req.query._id)
     try {
-      const users = await Absentlist.find({resolvedBy:_id}); 
+      const users = await Data.find({assignedTo :_id});
+      console.log(users); 
       res.status(200).send({ status: true, data: users });
     } catch (e) {
       console.log(e.message);

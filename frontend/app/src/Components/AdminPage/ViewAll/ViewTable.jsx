@@ -1,100 +1,96 @@
-import React, { useEffect, useState } from 'react';
-import { Table, Button } from 'antd'; 
+import React, { useState } from 'react';
+import { Table, Button, Popconfirm } from 'antd';
 import { setStatus } from './getAllLogs';
 
-const columns = (handleApprove) => [
+// Define the table columns
+const columns = (handleAction) => [
   {
-    title: 'Name',
-    dataIndex: 'UserName',
-    showSorterTooltip: {
-      target: 'full-header', 
-    },
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.UserName.localeCompare(b.UserName), 
+    title: 'Title',
+    dataIndex: 'title',
+    key: 'title',
   },
-  {
-    title: 'Email',
-    dataIndex: 'userEmail',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.userEmail.localeCompare(b.userEmail), 
-  },
-  {
-    title: 'Type',
-    dataIndex: 'transactionType',
-    filters: [
-      { text: 'Invoice', value: 'Invoice' },
-      { text: 'Expense', value: 'Expense' },
-      { text: 'Refund', value: 'Refund' },
-      { text: 'Reimbursement', value: 'Reimbursement' }
-    ],
-  onFilter: (value, record) => record.transactionType == value,
- 
-    sorter: (a, b) => a.transactionType.trim().localeCompare(b.transactionType.trim()),
-  },
-  {
-    title: 'Amount',
-    dataIndex: 'amount',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.amount - b.amount, 
-  }, 
   {
     title: 'Description',
     dataIndex: 'description',
+    key: 'description',
   },
   {
-    title: 'Action',
-    key: 'action',
+    title: 'Deadline',
+    dataIndex: 'deadline',
+    key: 'deadline',
+    render: (deadline) => new Date(deadline).toLocaleDateString(),
+    sorter: (a, b) => new Date(a.deadline) - new Date(b.deadline),
+  },
+  {
+    title: 'Assigned By',
+    dataIndex: 'Adminusername',
+    key: 'Adminusername',
+  },
+  {
+    title: 'Created At',
+    dataIndex: 'createdAt',
+    key: 'createdAt',
+    render: (createdAt) => new Date(createdAt).toLocaleString(),
+    sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
+  },
+  {
+    title: 'Actions',
+    key: 'actions',
     render: (text, record) => (
       <span>
-        <Button 
-          type="primary" 
-          className='w-100 m-2'
-          onClick={() => handleApprove(record, 'Approved')} 
-        >
-          Approve
-        </Button>
         <Button
-        className='text-light w-100 mt-2' 
-          onClick={() => handleApprove(record, 'Rejected')} 
-          style={{ marginLeft: '8px',backgroundColor:'#ff0000' }}
+          type="primary"
+          className="m-2"
+          onClick={() => handleAction(record, 'Accepted')}
         >
-          Reject
+          Accept
         </Button>
+        <Popconfirm
+          title="Reject the task"
+          description="Are you sure to reject this task?"
+          onConfirm={() => handleAction(record, 'Rejected')}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button danger>
+            Reject
+          </Button>
+        </Popconfirm>
       </span>
     ),
   },
 ];
 
-const handleApprove = (record, value,setstatus, filteredData, setdata) => {
-   setStatus(record, value)
-    
-    const idx = filteredData.findIndex(ele => ele._id === record._id);
-    filteredData.splice(idx, 1);
-   
-    setdata(filteredData);
-    setstatus((prev)=>!prev)
-
+// Handle task approval/rejection
+const handleApprove = (record, value, filteredData, setData, setLoading) => {
+  
+  setStatus(record, value,filteredData,setData,setLoading)
 };
 
-const App = ({ data, setdata }) => {
-  var  filteredData = data.filter(record => record.status === 'Pending');
-  const [status,setstatus]=useState(false)
-  useEffect(() => {
-    console.log('Data has been updated:');
-  }, [data]);
+
+  const App = ({ data, setData }) => {
+  const [loading, setLoading] = useState(false);
+
+ 
+  const filteredData = data.filter((record) => record.status === 'Pending');
 
   return (
     <Table
-      columns={columns((record, value) => handleApprove(record, value,setstatus, filteredData, setdata))} // Pass handleApprove with the data and setdata
-      dataSource={filteredData} 
+      columns={columns((record, value) =>
+        handleApprove(record, value, filteredData, setData, setLoading)
+      )}
+      dataSource={filteredData}
+      loading={loading}
       onChange={onChange}
-      showSorterTooltip={{ target: 'sorter-icon' }} 
+      showSorterTooltip
+      rowKey="_id" 
     />
   );
 };
 
+// Table change handler
 const onChange = (pagination, filters, sorter, extra) => {
-  console.log('params', pagination, filters, sorter, extra);
+  console.log('Table parameters:', pagination, filters, sorter, extra);
 };
 
 export default App;

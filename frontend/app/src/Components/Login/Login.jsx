@@ -12,7 +12,7 @@ export default function Login() {
         password: '',
         email: '',
         confirmPassword: '',
-        role: 'employee'  // Default role for both login and signup
+        role: 'employee'  
     };
     const navigate = useNavigate();
     const [data, setData] = useState(initialData);

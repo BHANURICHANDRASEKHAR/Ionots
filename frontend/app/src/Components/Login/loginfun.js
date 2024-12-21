@@ -1,13 +1,13 @@
 import axios from "axios";
 import Cookie from 'js-cookie';
 import { errorfunction, successfunction } from "../../toast";
-
+import { api } from "../../App";
 async function loginfunction(setLoading, data, setShow,navigate) {
    const check=loginvali(data);
     if(check)
     { setLoading(true);
         try {
-            const response = await axios.post("https://complyance.onrender.com/getUsers",data);
+            const response = await axios.post(`${api}/getUsers`,data);
            
             if (response.data.status) {
                 
@@ -33,12 +33,11 @@ async function loginfunction(setLoading, data, setShow,navigate) {
                     errorfunction('Invalid Credentials');
                 }
             } else {
-                errorfunction('User not found '); // Provide a default error message
+                errorfunction('User not found '); 
             }
         } catch (error) {
             console.error("Error fetching data", error);
-            errorfunction('An error occurred while logging in'); // Provide feedback to the user
-        } finally {
+            errorfunction('An error occurred while logging in');
             setLoading(false); 
         }
     }
@@ -52,7 +51,7 @@ const check=signvali(data)
         setloading(true);
         try{
             
-            const response = await axios.post("https://complyance.onrender.com/adduser",data);
+            const response = await axios.post(`${api}/adduser`,data);
             if(response.data.status)
             {
               successfunction(response.data.msg);
@@ -72,7 +71,6 @@ const check=signvali(data)
         setloading(false);
     }
 }
-{/*dealsdray-test-rglo.onrender.com */}
 function loginvali(data)
 {
     if(data.email.length==0 || data.password.length==0  )

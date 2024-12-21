@@ -23,21 +23,21 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Home />} />
         
-        {role.role === 'employee' && (
-          <React.Fragment> 
-            <Route path="/employee/transaction-submission-form" element={<SubmitTransaction />} />
-            <Route path="/employee/view-transactions" element={<ViewTransactions />} />
-          </React.Fragment>
-        )}
-
         {role.role === 'manager' && (
-          <React.Fragment>
-            <Route path="/manager/view-all-transactions" element={<ViewAllTransactions />} />
-            <Route path="/manager/view-audit-logs" element={<ViewLogs />} />
+          <React.Fragment> 
+            <Route path="/manager/project-assign-form" element={<SubmitTransaction />} />
+            <Route path="/manager/view-all-assigned-tasks" element={<ViewTransactions />} />
           </React.Fragment>
         )}
 
-        {/* Redirect to home if user role doesn't match */}
+        {role.role === 'employee' && (
+          <React.Fragment>
+            <Route path="/employee/view-assigned-tasks" element={<ViewAllTransactions />} />
+            <Route path="/employee/view-all-tasks" element={<ViewLogs />} />
+          </React.Fragment>
+        )}
+
+        
         <Route path="*" element={<PageNotFound/>} />
       </Routes>
     </React.Fragment>

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
-// configure data
+
 dotenv.config();
 
 const MongooDB=()=>{

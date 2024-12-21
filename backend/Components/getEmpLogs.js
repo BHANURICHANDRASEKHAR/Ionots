@@ -1,12 +1,12 @@
 /**getemplogs */
 import express from 'express';
-import Absentlist from "../Modals/TransactionSchema.js";
+import ProjectsData from "../Modals/TransactionSchema.js";
 const router=express.Router();
 router.get('/', async (req, res) => {
-    const {_id,email}=req.query;
-    
+   console.log(req.query.role._id)
     try {
-      const users = await Absentlist.find({userEmail: email}); 
+      const users = await ProjectsData.find(req.query.role.assignedTo);
+      console.log(users)
       res.status(200).send({ status: true, data: users });
     } catch (e) {
       console.log(e.message);

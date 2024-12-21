@@ -103,7 +103,7 @@ table tr th td{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-.dark-mode {
-  background-color: #333;
-  color: #fff !important;
+.active{
+  color: rgba(56, 25, 230, 0.797);
+  font-weight: bold;
 }

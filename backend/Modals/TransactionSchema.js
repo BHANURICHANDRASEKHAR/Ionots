@@ -1,43 +1,51 @@
-import mongoose from "mongoose";
-const TransactionSchema = new mongoose.Schema({
-  userEmail: {
+import mongoose from 'mongoose';
+const ProjectSchema = new mongoose.Schema({
+  title: {
     type: String,
-    required: true,
-  },
-  UserName:{
-    type: String,
-    required: true,
-  },
-  transactionType: {
-    type: String,
-    required: true,
-  },
-  amount: {
-    type: Number,
     required: true,
   },
   description: {
     type: String,
     required: true,
   },
+  deadline: {
+    type: Date,
+    required: true,
+  },
+  assignedTo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', 
+    required: false,
+  },
+  assignedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Admin', 
+    required: true,
+  },
   status: {
     type: String,
-    enum: ["Pending", "Approved", "Rejected"],
-    default: "Pending",
-    required: true,
+    enum: ['Pending', 'Accepted', 'Rejected', 'In Progress', 'Completed'],
+    default: 'Pending',
+  },
+  progress: {
+    type: Number, 
+    default: 0,
+    required:false
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
-  actionAt:{
+  actionAt: {
     type: Date,
-  
-  },  
-  resolvedBy:{
+    
+    required: false,
+  },
+  Adminusername:{
     type: String,
-    default: null,
-}
+    required: true,
+    ref: 'Admin',
+  }
 });
 
-export default mongoose.model("Transaction", TransactionSchema);
+export default mongoose.model('Project', ProjectSchema);

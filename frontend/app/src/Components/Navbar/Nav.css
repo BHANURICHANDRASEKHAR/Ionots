@@ -60,11 +60,10 @@
   
   /* Logo Styling */
   .medha {
-    height: 1.8rem;
+    height: 5rem;
     object-fit:contain;
   }
   
-  /* Web Name Styling */
   .webname {
     font-size: 2rem;
     font-weight: bold;
