@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
    
     try {
       const data = await FormData.find({assignedBy:req.query._id}); 
-      console.log(data);
+     
       res.status(200).send({ status: true, data: data });
     } catch (e) {
       console.log(e.message);

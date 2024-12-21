@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Steps, Pagination, Button } from 'antd'; 
-import Nodata from '../../../Nodata'
+import Nodata from '../../../Nodata.jsx'
 import {setStatus} from './getLogs.js'
 const App = ({ transactions,role,setdata  }) => {
   const [currentPage, setCurrentPage] = useState(1); 

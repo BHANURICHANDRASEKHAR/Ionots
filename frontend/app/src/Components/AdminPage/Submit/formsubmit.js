@@ -48,7 +48,7 @@ export async function getEmp_data(SetData, setLoading) {
     const response = await axios.get(`${api}/getEmployees`);
     if (response.data.status == true) {
       SetData(response.data.data);
-      console.log('Employees data', response.data.data);  
+     
     }
   } catch (error) {
     console.log(error.message);

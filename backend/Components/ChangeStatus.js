@@ -8,7 +8,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   const [userdata, value] = req.body; 
   const { _id } = userdata;
-  console.log(_id)
+
   try {
     const userToUpdate = await Absentlist.findById(_id);
 

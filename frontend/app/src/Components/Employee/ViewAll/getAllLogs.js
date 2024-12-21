@@ -1,5 +1,5 @@
 import axios  from "axios";
-import { errorfunction,successfunction } from "../../../toast";
+import { errorfunction,successfunction } from "../../../toast.js";
 import getToken from "../../Context/token.js";
 import { api } from "../../../App.jsx";
 export default async function getManagerLogs(setLoading,setData,role)

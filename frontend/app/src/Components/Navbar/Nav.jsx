@@ -9,7 +9,7 @@ import Logout from './Logout.jsx';
 import { Context } from '../Context/UserContext.jsx';
 function BasicExample() {
   const {role} =useContext(Context);
-  console.log(role);
+  
   const navbardata={
     'employee':[{
       to:'View Assigned Tasks',
@@ -26,7 +26,7 @@ function BasicExample() {
       link:'/manager/view-all-assigned-tasks'
     }]
   }
-  console.log(navbardata[role.role])
+ 
   return (
     <Navbar expand="lg" className="bg-body-tertiary" style={{ display: 'flex' }}>
       <Container>

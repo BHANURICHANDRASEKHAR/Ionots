@@ -1,6 +1,6 @@
 import React,{useState,useEffect,useContext} from 'react'
-import Loader from '../../Loader/Loader'
-import { Context } from '../../Context/UserContext';
+import Loader from '../../Loader/Loader.jsx'
+import { Context } from '../../Context/UserContext.jsx';
 import LogStep from './LogsSteps.jsx'
 import getLogs from './getLogs.js'
 import Nodata from '../../../Nodata.jsx'

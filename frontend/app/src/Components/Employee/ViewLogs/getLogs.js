@@ -23,7 +23,7 @@ export default async function getManagerLogs(setLoading, setData, role) {
 export  async function setStatus(userdata,value,setLoading,index,setdata,Total_data)
 {
   setLoading(true);
-  console.log(value)
+  
     try{ 
         const response = await axios.post(`${api}/setStatus`,[userdata,value]);
         if(response.data.status==true) {

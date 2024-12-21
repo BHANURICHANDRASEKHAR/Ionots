@@ -2,10 +2,10 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import EmployeePage from '../Employee/EmployeePage';
-import SubmitTransaction from '../Employee/Submit/TransactionForm';
-import ViewTransactions from '../Employee/View/ViewTransactions';
-import ViewLogs from '../AdminPage/ViewLogs/ViewLogs';
-import ViewAllTransactions from '../AdminPage/ViewAll/ViewAllTransactions';
+import SubmitTransaction from '../AdminPage/Submit/TransactionForm';
+import ViewTransactions from '../AdminPage/View/ViewTransactions';
+import ViewLogs from '../Employee/ViewLogs/ViewLogs';
+import ViewAllTransactions from '../Employee/ViewAll/ViewAllTransactions';
 import Nav from './Nav'; 
 import Home from '../Home';
 import { Context } from '../Context/UserContext';

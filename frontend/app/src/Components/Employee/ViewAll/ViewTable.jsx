@@ -90,7 +90,7 @@ const handleApprove = (record, value, filteredData, setData, setLoading) => {
 
 // Table change handler
 const onChange = (pagination, filters, sorter, extra) => {
-  console.log('Table parameters:', pagination, filters, sorter, extra);
+  console.log('Table parameters:');
 };
 
 export default App;
